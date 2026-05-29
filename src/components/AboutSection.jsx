@@ -2,6 +2,12 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Lanyard from './Lanyard/Lanyard';
 
+const FacebookIcon = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>;
+const InstagramIcon = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>;
+const GithubIcon = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>;
+const DiscordIcon = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 9c0-5-3-7-3-7s-1-.5-3-.5c0 0-1 2-1 2H10s-1-2-1-2c-2 0-3 .5-3 .5s-3 2-3 7c0 5 3 10 3 10s1 1 3 1 1-1 1-1h6s0 1 1 1 3-1 3-1 3-5 3-10z"></path><circle cx="9" cy="12" r="1"></circle><circle cx="15" cy="12" r="1"></circle></svg>;
+
+
 function HoverButton() {
   const [hovered, setHovered] = useState(false);
 
@@ -92,15 +98,56 @@ export default function AboutSection() {
         {/* Text Container */}
         <div style={{ flex: '1 1 400px', minWidth: '300px' }}>
           <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem', color: '#fff' }}>About Me</h2>
-          <p style={{ fontSize: '1.2rem', lineHeight: '1.8', color: '#ccc', marginBottom: '1.5rem' }}>
-            A dedicated Computer Engineering undergraduate who believes the most effective software is created by teams who deeply care about what they build.
+          <p style={{ fontSize: '1.15rem', lineHeight: '1.7', color: '#ccc', marginBottom: '1.25rem' }}>
+            I'm a Computer Engineering undergraduate who believes the best software comes from teams that deeply care about their craft.
           </p>
-          <p style={{ fontSize: '1.2rem', lineHeight: '1.8', color: '#ccc', marginBottom: '1.5rem' }}>
-            Drawing from hands-on experience in cross-platform development and collaborative hackathons, I value innovative environments and community-driven problem-solving.
+          <p style={{ fontSize: '1.15rem', lineHeight: '1.7', color: '#ccc', marginBottom: '1.25rem' }}>
+            With hands-on experience in cross-platform development and hackathons, I thrive in innovative, community-driven environments.
           </p>
-          <p style={{ fontSize: '1.2rem', lineHeight: '1.8', color: '#ccc', marginBottom: '2.5rem' }}>
-            I am looking for an opportunity to grow my technical foundation while helping build solutions that have a positive, real-world impact.
+          <p style={{ fontSize: '1.15rem', lineHeight: '1.7', color: '#ccc', marginBottom: '2rem' }}>
+            I'm looking to grow my technical foundation while building solutions that make a positive, real-world impact.
           </p>
+
+          <div style={{ display: 'flex', gap: '1rem', marginBottom: '2.5rem' }}>
+            {[
+              { icon: <FacebookIcon />, url: 'https://www.facebook.com/cold.takoyaki', name: 'Facebook' },
+              { icon: <InstagramIcon />, url: 'https://www.instagram.com/zchry.io/', name: 'Instagram' },
+              { icon: <GithubIcon />, url: 'https://github.com/jzekken', name: 'GitHub' },
+              { icon: <DiscordIcon />, url: 'https://discord.com/users/746288261491851304', name: 'Discord' }
+            ].map(social => (
+              <a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={social.name}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '45px',
+                  height: '45px',
+                  borderRadius: '50%',
+                  backgroundColor: 'rgba(255,255,255,0.05)',
+                  color: 'var(--accent-white)',
+                  transition: 'all 0.3s ease',
+                  border: '1px solid rgba(255,255,255,0.1)'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.15)';
+                  e.currentTarget.style.transform = 'translateY(-3px)';
+                  e.currentTarget.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.05)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
 
           <AnimatePresence>
             {pulled && (
