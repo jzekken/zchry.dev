@@ -84,6 +84,37 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
   const segmentProps = { type: 'dynamic', canSleep: true, colliders: false, angularDamping: 4, linearDamping: 4 };
   const { nodes, materials } = useGLTF(cardGLB);
   const texture = useTexture(lanyard);
+  
+  const [cardTexture, setCardTexture] = useState(materials.base.map);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = '/id-badge.png';
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      // Set canvas to perfectly preserve the image's height, but double the width 
+      // so the UV map can split it between front and back.
+      canvas.width = img.width * 2;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      
+      // Replicate the perfect "offset.x = 0.25" fit you liked:
+      // We draw the image twice as wide, shifted left by 25% of the canvas width.
+      // This places the exact center 50% of your image squarely on the left half of the canvas (the front of the card).
+      ctx.drawImage(img, -(canvas.width / 4), 0, canvas.width, canvas.height);
+      
+      // Fill the entire right half of the canvas with pure white 
+      // (this corresponds to the back of the card)
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(canvas.width / 2, 0, canvas.width / 2, canvas.height);
+      
+      const tex = new THREE.CanvasTexture(canvas);
+      tex.flipY = false; // GLTF UV requirement
+      tex.anisotropy = 16;
+      setCardTexture(tex);
+    };
+  }, []);
+
   const [curve] = useState(
     () =>
       new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()])
@@ -165,7 +196,7 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
           >
             <mesh geometry={nodes.card.geometry}>
               <meshPhysicalMaterial
-                map={materials.base.map}
+                map={cardTexture}
                 map-anisotropy={16}
                 clearcoat={isMobile ? 0 : 1}
                 clearcoatRoughness={0.15}
