@@ -12,7 +12,7 @@ export default function ContactSection() {
 
     const data = new FormData();
     // REPLACE THIS with the key generated from https://web3forms.com/
-    data.append("access_key", "YOUR_ACCESS_KEY_HERE"); 
+    data.append("access_key", "2a6dedf4-19b5-4de8-8705-6da11ed6eb18"); 
     data.append("name", formData.name);
     data.append("email", formData.email);
     data.append("message", formData.message);
