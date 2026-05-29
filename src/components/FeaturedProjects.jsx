@@ -53,6 +53,7 @@ const projects = [
     role: 'Full-Stack Developer',
     description: 'A centralized digital hub for managing, organizing, and accessing essential online resources and tools. A comprehensive educational platform that extracts text from document uploads to create interactive study materials. It features AI-driven text summarization, custom quiz and flashcard generation, a contextual chatbot for querying notes, and an integrated calendar for task management.',
     links: [{ label: 'GitHub', url: 'https://github.com/jzekken/Mort.git' }],
+    launchUrl: 'https://mort-352n.onrender.com',
     image: '/projects/mort/mort.webp',
     screenshots: [
       '/projects/mort/Mort.mp4',
@@ -67,7 +68,11 @@ const projects = [
     color: '#33ff88',
     role: 'Software Engineer',
     description: 'A chess game with FPS mechanics. You miss, you lose the piece. Built using React and Node.js, this highly experimental webapp fuses the strategic depth of traditional chess with the mechanical skill and adrenaline of a first-person shooter. Every capture requires a perfectly aimed shot, transforming a quiet board game into a high-stakes arena.',
-    links: [{ label: 'Play Now', url: 'https://chessfps.vercel.app/' }],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/jzekken/chessfps.git' },
+      { label: 'Play Now', url: 'https://chessfps.vercel.app/' }
+    ],
+    launchUrl: 'https://chessfps.vercel.app/',
     image: '/projects/chessfps/chessfps.webp',
     screenshots: [
       '/projects/chessfps/1.webp',

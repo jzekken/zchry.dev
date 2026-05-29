@@ -218,18 +218,20 @@ export default function ProjectDetails({ project, onClose }) {
                     </div>
                   </motion.div>
 
-                  <motion.div
-                    initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.45, duration: 0.5 }}
-                  >
-                    <button className="launch-btn">
-                      <span style={{
-                        width: '7px', height: '7px', borderRadius: '50%',
-                        background: project.color, display: 'inline-block', flexShrink: 0,
-                      }} />
-                      LAUNCH PROJECT
-                    </button>
-                  </motion.div>
+                  {project.launchUrl && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.45, duration: 0.5 }}
+                    >
+                      <button className="launch-btn" onClick={() => window.open(project.launchUrl, '_blank', 'noopener,noreferrer')}>
+                        <span style={{
+                          width: '7px', height: '7px', borderRadius: '50%',
+                          background: project.color, display: 'inline-block', flexShrink: 0,
+                        }} />
+                        LAUNCH PROJECT
+                      </button>
+                    </motion.div>
+                  )}
 
                   {/* Scroll hint */}
                   <motion.div
