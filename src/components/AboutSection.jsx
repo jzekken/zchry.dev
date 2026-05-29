@@ -58,7 +58,7 @@ export default function AboutSection() {
 
   return (
     // Pull section up to remove gap from hero padding
-    <section className="section" style={{ padding: '0 2rem 4rem 2rem', marginTop: '-32px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <section id="about" className="section" style={{ padding: '0 2rem 4rem 2rem', marginTop: '-32px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <div style={{
         maxWidth: '1200px',
         width: '100%',

@@ -1,3 +1,4 @@
+import Navbar from './components/Navbar';
 import HeroVisuals from './components/HeroVisuals';
 import AboutSection from './components/AboutSection';
 import FeaturedProjects from './components/FeaturedProjects';
@@ -10,6 +11,7 @@ import FlowingLines from './components/FlowingLines';
 function App() {
   return (
     <main style={{ backgroundColor: 'var(--bg-color)', position: 'relative' }}>
+      <Navbar />
       <FlowingLines />
       <HeroVisuals />
       <AboutSection />

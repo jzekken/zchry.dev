@@ -49,7 +49,7 @@ export default function TechStackSection() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', paddingBottom: '2rem' }}>
       
       {/* Tech Stack / Arsenal */}
-      <section className="section" style={{ padding: '2rem', textAlign: 'center' }}>
+      <section id="stack" className="section" style={{ padding: '2rem', textAlign: 'center' }}>
         <h2 style={{ fontSize: '3.5rem', marginBottom: '3rem' }}>
           <span className="text-white">TECH </span>
           <span className="text-yellow">STACK</span>

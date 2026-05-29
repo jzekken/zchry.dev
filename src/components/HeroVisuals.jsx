@@ -117,7 +117,7 @@ export default function HeroVisuals() {
   const currentPalette = PALETTES[paletteIndex];
 
   return (
-    <section className="section" style={{ padding: '2rem', height: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <section id="hero" className="section" style={{ padding: '2rem', height: '100vh', display: 'flex', flexDirection: 'column' }}>
       
       <div 
         style={{

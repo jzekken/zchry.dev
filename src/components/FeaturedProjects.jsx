@@ -88,7 +88,7 @@ export default function FeaturedProjects() {
   const [selectedProject, setSelectedProject] = useState(null);
 
   return (
-    <section className="section" style={{ padding: '4rem 0 2rem 0', backgroundColor: 'transparent' }}>
+    <section id="projects" className="section" style={{ padding: '4rem 0 2rem 0', backgroundColor: 'transparent' }}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
