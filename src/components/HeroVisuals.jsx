@@ -144,7 +144,7 @@ export default function HeroVisuals() {
             </h1>
             <p style={{ fontSize: '1.25rem', maxWidth: '500px', marginBottom: '2rem' }}>
               3rd year Computer Engineering student.<br/>
-              Lorem Ipsum rocks!
+             AI and Full Stack Developer.
             </p>
             <button style={{
               background: currentPalette[0],

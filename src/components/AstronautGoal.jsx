@@ -151,10 +151,15 @@ export default function AstronautGoal() {
   const textRef = useRef(null);
 
   const handleContactClick = () => {
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: 'smooth'
-    });
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
   };
 
   const startPosition = [-25, 12, -40]; // Deep top-left starting point for the group
@@ -216,18 +221,24 @@ export default function AstronautGoal() {
                 borderRadius: '50px',
                 cursor: 'pointer',
                 boxShadow: '0 4px 15px rgba(230, 35, 37, 0.4)',
-                transition: 'transform 0.2s, box-shadow 0.2s'
+                transition: 'transform 0.2s, box-shadow 0.2s',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.5rem'
               }}
               onMouseEnter={(e) => {
-                e.target.style.transform = 'translateY(-2px)';
-                e.target.style.boxShadow = '0 6px 20px rgba(230, 35, 37, 0.6)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 20px rgba(230, 35, 37, 0.6)';
               }}
               onMouseLeave={(e) => {
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = '0 4px 15px rgba(230, 35, 37, 0.4)';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(230, 35, 37, 0.4)';
               }}
             >
-              Contact Me
+              <span>↓</span>
+              <span>Contact Me</span>
+              <span>↓</span>
             </button>
           </div>
       </div>

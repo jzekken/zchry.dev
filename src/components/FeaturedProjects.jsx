@@ -1,16 +1,11 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { playServoSound } from '../utils/playSound';
+import ProjectDetails from './ProjectDetails';
 
 const projects = [
   {
     id: 1,
-    title: 'ONION',
-    category: 'AI-Powered Plant Care Companion',
-    techStack: 'C# (OOP)',
-    color: '#33ff88' // Plant green
-  },
-  {
-    id: 2,
     title: 'TuklaScope',
     category: 'AI-Powered Career Discovery',
     techStack: 'Flutter (Dart), FastAPI (Python), Neo4j, Supabase',
@@ -18,7 +13,7 @@ const projects = [
     image: '/projects/Tuklascope.png'
   },
   {
-    id: 3,
+    id: 2,
     title: 'LaagtabAI',
     category: 'AI-Integrated Travel Assistant',
     techStack: 'React Native, FastAPI, Firebase',
@@ -26,16 +21,25 @@ const projects = [
     image: '/projects/Laag ta bAI.png'
   },
   {
-    id: 4,
+    id: 3,
     title: 'M.O.R.T.',
     category: 'AI-Powered Centralized Study Hub',
     techStack: 'React, Node.js, Firebase',
     color: 'var(--accent-red)',
     image: '/projects/mort.png'
+  },
+  {
+    id: 4,
+    title: 'chessfps',
+    category: 'Webapp Game',
+    techStack: 'React, Node.js',
+    color: '#33ff88'
   }
 ];
 
 export default function FeaturedProjects() {
+  const [selectedProject, setSelectedProject] = useState(null);
+
   return (
     <section className="section" style={{ padding: '4rem 0 2rem 0', backgroundColor: 'transparent' }}>
       <div className="container">
@@ -72,6 +76,7 @@ export default function FeaturedProjects() {
                 filter: ["blur(0px)", "blur(6px)", "blur(0px)"]
               }}
               onMouseEnter={() => playServoSound()}
+              onClick={() => setSelectedProject(project)}
               style={{
                 padding: '2rem',
                 cursor: 'pointer',
@@ -123,6 +128,15 @@ export default function FeaturedProjects() {
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {selectedProject && (
+          <ProjectDetails 
+            project={selectedProject} 
+            onClose={() => setSelectedProject(null)} 
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

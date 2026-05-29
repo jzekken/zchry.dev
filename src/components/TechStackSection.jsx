@@ -2,46 +2,103 @@ import React from 'react';
 import { Code2, Monitor, Cpu, Terminal, Database, Palette, Settings, Globe, Server } from 'lucide-react';
 import CircularGallery from './CircularGallery/CircularGallery';
 
+const techCategories = [
+  {
+    title: 'Programming',
+    skills: [
+      { name: 'Python', slug: 'python', color: '3776AB' },
+      { name: 'TypeScript', slug: 'typescript', color: '3178C6' },
+      { name: 'JavaScript', slug: 'javascript', color: 'F7DF1E' },
+      { name: 'C', slug: 'c', color: 'A8B9CC' },
+      { name: 'C++', slug: 'cplusplus', color: '00599C' },
+      { name: 'C#', customImage: '/Logo_C_sharp.svg.png' },
+      { name: 'Dart', slug: 'dart', color: '0175C2' },
+      { name: 'Bash', slug: 'gnubash', color: '4EAA25' },
+    ]
+  },
+  {
+    title: 'Frontend & Mobile',
+    skills: [
+      { name: 'React', slug: 'react', color: '61DAFB' },
+      { name: 'Flutter', slug: 'flutter', color: '02569B' }
+    ]
+  },
+  {
+    title: 'Backend & AI',
+    skills: [
+      { name: 'Node.js', slug: 'nodedotjs', color: '339933' },
+      { name: 'Express', slug: 'express', color: 'ffffff' },
+      { name: 'FastAPI', slug: 'fastapi', color: '009688' },
+      { name: 'TensorFlow', slug: 'tensorflow', color: 'FF6F00' },
+      { name: 'PyTorch', slug: 'pytorch', color: 'EE4C2C' },
+      { name: 'OpenCV', slug: 'opencv', color: '5C3EE8' }
+    ]
+  },
+  {
+    title: 'Databases & Cloud',
+    skills: [
+      { name: 'Firebase', slug: 'firebase', color: 'FFCA28' },
+      { name: 'Supabase', slug: 'supabase', color: '3ECF8E' },
+      { name: 'Neo4j', slug: 'neo4j', color: '4581C3' }
+    ]
+  }
+];
+
 export default function TechStackSection() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', paddingBottom: '2rem' }}>
       
       {/* Tech Stack / Arsenal */}
       <section className="section" style={{ padding: '2rem', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '3rem', marginBottom: '2rem', color: '#fff' }}>Tech Stack & Arsenal</h2>
+        <h2 style={{ fontSize: '3.5rem', marginBottom: '3rem' }}>
+          <span className="text-white">TECH </span>
+          <span className="text-yellow">STACK</span>
+        </h2>
+        
         <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '1.5rem',
-          flexWrap: 'wrap',
-          maxWidth: '1000px',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+          gap: '2rem',
+          maxWidth: '1200px',
           margin: '0 auto'
         }}>
-          {[
-            { name: 'React', icon: <Monitor size={20}/> },
-            { name: 'Vite', icon: <Terminal size={20}/> },
-            { name: 'Three.js', icon: <Globe size={20}/> },
-            { name: 'Framer Motion', icon: <Palette size={20}/> },
-            { name: 'Node.js', icon: <Server size={20}/> },
-            { name: 'Tailwind CSS', icon: <Code2 size={20}/> },
-            { name: 'WebGL', icon: <Cpu size={20}/> },
-            { name: 'C++', icon: <Settings size={20}/> },
-            { name: 'Python', icon: <Database size={20}/> }
-          ].map(tech => (
-            <div key={tech.name} style={{
+          {techCategories.map((category, idx) => (
+            <div key={idx} style={{
+              backgroundColor: 'rgba(255,255,255,0.02)',
+              border: '1px solid rgba(255,255,255,0.05)',
+              borderRadius: '16px',
+              padding: '2rem',
               display: 'flex',
+              flexDirection: 'column',
               alignItems: 'center',
-              gap: '0.75rem',
-              padding: '1rem 2rem',
-              borderRadius: '50px',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              color: '#ccc',
-              fontSize: '1.2rem',
-              fontWeight: '600',
-              backgroundColor: 'rgba(255, 255, 255, 0.05)'
+              boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
             }}>
-              {tech.icon}
-              {tech.name}
+              <h3 style={{ color: '#fff', marginBottom: '2rem', fontSize: '1.25rem', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                {category.title}
+              </h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem', justifyContent: 'center' }}>
+                {category.skills.map(skill => (
+                  <div key={skill.name} style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '0.75rem',
+                    width: '60px',
+                    transition: 'transform 0.2s',
+                    cursor: 'default'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                  >
+                    <img 
+                      src={skill.customImage ? skill.customImage : `https://cdn.simpleicons.org/${skill.slug}/${skill.color}`} 
+                      alt={skill.name} 
+                      style={{ width: '40px', height: '40px', objectFit: 'contain' }}
+                    />
+                    <span style={{ color: '#888', fontSize: '0.75rem', textAlign: 'center', fontWeight: 'bold' }}>{skill.name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
@@ -56,7 +113,17 @@ export default function TechStackSection() {
         
         {/* Circular Gallery Container */}
         <div style={{ width: '100%', height: '600px', position: 'relative' }}>
-          <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} />
+          <CircularGallery 
+            items={[
+              { image: '/gallery/cebi.jpg', text: 'CEBI' },
+              { image: '/gallery/ibpap.png', text: 'IBPAP' },
+              { image: '/gallery/ncr.jpg', text: 'NCR' },
+              { image: '/gallery/projects.jpg', text: 'PROJECTS' }
+            ]} 
+            bend={3} 
+            textColor="#ffffff" 
+            borderRadius={0.05} 
+          />
         </div>
       </section>
       

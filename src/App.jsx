@@ -3,6 +3,7 @@ import AboutSection from './components/AboutSection';
 import FeaturedProjects from './components/FeaturedProjects';
 import TechStackSection from './components/TechStackSection';
 import AstronautGoal from './components/AstronautGoal';
+import ContactSection from './components/ContactSection';
 import PlugsFooter from './components/PlugsFooter';
 import FlowingLines from './components/FlowingLines';
 
@@ -15,6 +16,7 @@ function App() {
       <FeaturedProjects />
       <TechStackSection />
       <AstronautGoal />
+      <ContactSection />
       <PlugsFooter />
     </main>
   );

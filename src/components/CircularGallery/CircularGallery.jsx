@@ -148,9 +148,8 @@ class Media {
         varying vec2 vUv;
         void main() {
           vUv = uv;
-          vec3 p = position;
-          p.z = (sin(p.x * 4.0 + uTime) * 1.5 + cos(p.y * 2.0 + uTime) * 1.5) * (0.1 + uSpeed * 0.5);
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
+          // Removed the p.z wave distortion so the images remain perfectly flat
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
         }
       `,
       fragment: `
@@ -291,12 +290,16 @@ class App {
       borderRadius = 0,
       font = 'bold 30px Figtree',
       scrollSpeed = 2,
-      scrollEase = 0.05
+      scrollEase = 0.05,
+      autoScroll = true,
+      autoScrollSpeed = 1.0
     } = {}
   ) {
     document.documentElement.classList.remove('no-js');
     this.container = container;
     this.scrollSpeed = scrollSpeed;
+    this.autoScroll = autoScroll;
+    this.autoScrollSpeed = autoScrollSpeed;
     this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
     this.onCheckDebounce = debounce(this.onCheck, 200);
     this.createRenderer();
@@ -413,6 +416,20 @@ class App {
     }
   }
   update() {
+    // Automatically advance to the next slide every 3 seconds if not dragging
+    if (this.autoScroll && !this.isDown) {
+      const now = performance.now();
+      if (!this.lastAutoScrollTime) this.lastAutoScrollTime = now;
+      if (now - this.lastAutoScrollTime > 3000) {
+        if (this.medias && this.medias[0]) {
+          this.scroll.target += this.medias[0].width;
+        }
+        this.lastAutoScrollTime = now;
+      }
+    } else {
+      this.lastAutoScrollTime = performance.now();
+    }
+    
     this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
     const direction = this.scroll.current > this.scroll.last ? 'right' : 'left';
     if (this.medias) {
@@ -462,11 +479,13 @@ export default function CircularGallery({
   borderRadius = 0.05,
   font = 'bold 30px Figtree',
   scrollSpeed = 2,
-  scrollEase = 0.05
+  scrollEase = 0.05,
+  autoScroll = true,
+  autoScrollSpeed = 1.0
 }) {
   const containerRef = useRef(null);
   useEffect(() => {
-    const app = new App(containerRef.current, { items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase });
+    const app = new App(containerRef.current, { items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase, autoScroll, autoScrollSpeed });
     return () => {
       app.destroy();
     };
