@@ -76,15 +76,17 @@ export default function FlowingLines() {
           ref={path1Ref}
           d="M -100,0 C 300,500 800,1000 200,2000 S 1000,3000 500,4000 S -200,5000 300,6000"
           fill="none"
-          stroke="#fcd53f" // Yellow
+          stroke="var(--accent-yellow)"
           strokeWidth="4"
+          style={{ transition: 'stroke 0.3s ease' }}
         />
         <path
           ref={path2Ref}
           d="M 1200,0 C 900,600 300,1200 1000,2200 S 100,3200 800,4200 S 1400,5200 600,6200"
           fill="none"
-          stroke="#0055ff" // Blue
+          stroke="var(--accent-blue-bright)"
           strokeWidth="4"
+          style={{ transition: 'stroke 0.3s ease' }}
         />
       </svg>
     </div>
