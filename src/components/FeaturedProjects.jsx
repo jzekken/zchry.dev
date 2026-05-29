@@ -34,8 +34,8 @@ const projects = [
     techStack: 'React Native, FastAPI, Firebase',
     color: 'var(--accent-yellow)',
     role: 'Full-Stack Developer',
-    description: 'A smart application utilizing AI integration to seamlessly plan and explore travel destinations.',
-    links: [{ label: 'Live App', url: '#' }],
+    description: 'A smart application leveraging artificial intelligence to generate personalized travel itineraries and local recommendations, making exploration easier and more accessible for users.',
+    links: [{ label: 'GitHub', url: 'https://github.com/D4rkbyte-Hackathon/Laag-ta-bAI.git' }],
     image: '/projects/laagtabai/Laag ta bAI.webp',
     screenshots: [
       '/projects/laagtabai/8.webp',
@@ -76,16 +76,6 @@ const projects = [
       '/projects/chessfps/4.webp',
       '/projects/chessfps/5.webp'
     ]
-  },
-  {
-    id: 5,
-    title: 'ONION',
-    category: 'Personal PlantCare Companion',
-    techStack: 'C#, AI Image Recognition',
-    color: '#FFA500',
-    role: 'OOP Project | Hardware & Software Developer',
-    description: 'A smart application utilizing AI image recognition to identify plant species and track their overall health, providing users with an accessible tool to monitor and maintain optimal plant care. It seamlessly bridges hardware and software to offer real-time environmental diagnostics, helping both novice and expert gardeners keep their plants thriving.',
-    links: [{ label: 'GitHub', url: 'https://github.com/jzekken/ONION-Your-Personal-PlantCare-Companion.git' }]
   }
 ];
 
