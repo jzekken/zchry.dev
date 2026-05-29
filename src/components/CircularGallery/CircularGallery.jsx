@@ -301,6 +301,7 @@ class App {
     this.autoScroll = autoScroll;
     this.autoScrollSpeed = autoScrollSpeed;
     this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
+    this.isVisible = true; // Default to true until observer fires
     this.onCheckDebounce = debounce(this.onCheck, 200);
     this.createRenderer();
     this.createCamera();
@@ -310,6 +311,22 @@ class App {
     this.createMedias(items, bend, textColor, borderRadius, font);
     this.update();
     this.addEventListeners();
+    this.createObserver();
+  }
+  
+  createObserver() {
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          this.isVisible = entry.isIntersecting;
+          if (this.isVisible) {
+            this.lastAutoScrollTime = performance.now();
+          }
+        });
+      },
+      { rootMargin: '200px 0px' }
+    );
+    this.observer.observe(this.container);
   }
   createRenderer() {
     this.renderer = new Renderer({
@@ -416,6 +433,10 @@ class App {
     }
   }
   update() {
+    this.raf = window.requestAnimationFrame(this.update.bind(this));
+
+    if (!this.isVisible) return; // Skip heavy rendering when off-screen
+
     // Automatically advance to the next slide every 3 seconds if not dragging
     if (this.autoScroll && !this.isDown) {
       const now = performance.now();
@@ -437,7 +458,6 @@ class App {
     }
     this.renderer.render({ scene: this.scene, camera: this.camera });
     this.scroll.last = this.scroll.current;
-    this.raf = window.requestAnimationFrame(this.update.bind(this));
   }
   addEventListeners() {
     this.boundOnResize = this.onResize.bind(this);
@@ -456,6 +476,7 @@ class App {
     window.addEventListener('touchend', this.boundOnTouchUp);
   }
   destroy() {
+    if (this.observer) this.observer.disconnect();
     window.cancelAnimationFrame(this.raf);
     window.removeEventListener('resize', this.boundOnResize);
     window.removeEventListener('mousewheel', this.boundOnWheel);
