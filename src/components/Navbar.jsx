@@ -16,6 +16,11 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+
+      // Force 'contact' active if scrolled to absolute bottom
+      if (window.innerHeight + Math.round(window.scrollY) >= document.body.offsetHeight - 10) {
+        setActiveId('contact');
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -31,7 +36,7 @@ export default function Navbar() {
           }
         });
       },
-      { rootMargin: '-30% 0px -70% 0px' }
+      { rootMargin: '-20% 0px -40% 0px' }
     );
 
     NAV_ITEMS.forEach(({ id }) => {
