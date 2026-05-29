@@ -10,6 +10,9 @@ const projects = [
     category: 'AI-Powered Career Discovery',
     techStack: 'Flutter (Dart), FastAPI (Python), Neo4j, Supabase',
     color: 'var(--accent-blue-bright)',
+    role: 'Project Manager | Frontend Developer',
+    description: 'A cross-platform mobile app that utilizes AI object recognition to help users explore and discover potential career paths based on their real-world environment and interests.',
+    links: [{ label: 'GitHub', url: 'https://github.com/jzekken/tuklascope_mobile.git' }],
     isMobile: true,
     image: '/projects/tuklascope/Tuklascope.webp',
     screenshots: [
@@ -30,6 +33,9 @@ const projects = [
     category: 'AI-Integrated Travel Assistant',
     techStack: 'React Native, FastAPI, Firebase',
     color: 'var(--accent-yellow)',
+    role: 'Full-Stack Developer',
+    description: 'A smart application utilizing AI integration to seamlessly plan and explore travel destinations.',
+    links: [{ label: 'Live App', url: '#' }],
     image: '/projects/laagtabai/Laag ta bAI.webp',
     screenshots: [
       '/projects/laagtabai/8.webp',
@@ -44,6 +50,9 @@ const projects = [
     category: 'AI-Powered Centralized Study Hub',
     techStack: 'React, Node.js, Firebase',
     color: 'var(--accent-red)',
+    role: 'Full-Stack Developer',
+    description: 'A centralized digital hub for managing, organizing, and accessing essential online resources and tools. A comprehensive educational platform that extracts text from document uploads to create interactive study materials. It features AI-driven text summarization, custom quiz and flashcard generation, a contextual chatbot for querying notes, and an integrated calendar for task management.',
+    links: [{ label: 'GitHub', url: 'https://github.com/jzekken/Mort.git' }],
     image: '/projects/mort/mort.webp',
     screenshots: [
       '/projects/mort/Mort.mp4',
@@ -56,6 +65,9 @@ const projects = [
     category: 'Webapp Game',
     techStack: 'React, Node.js',
     color: '#33ff88',
+    role: 'Software Engineer',
+    description: 'A chess game with FPS mechanics. You miss, you lose the piece. Built using React and Node.js, this highly experimental webapp fuses the strategic depth of traditional chess with the mechanical skill and adrenaline of a first-person shooter. Every capture requires a perfectly aimed shot, transforming a quiet board game into a high-stakes arena.',
+    links: [{ label: 'Play Now', url: 'https://chessfps.vercel.app/' }],
     image: '/projects/chessfps/chessfps.webp',
     screenshots: [
       '/projects/chessfps/1.webp',
@@ -64,6 +76,16 @@ const projects = [
       '/projects/chessfps/4.webp',
       '/projects/chessfps/5.webp'
     ]
+  },
+  {
+    id: 5,
+    title: 'ONION',
+    category: 'Personal PlantCare Companion',
+    techStack: 'C#, AI Image Recognition',
+    color: '#FFA500',
+    role: 'OOP Project | Hardware & Software Developer',
+    description: 'A smart application utilizing AI image recognition to identify plant species and track their overall health, providing users with an accessible tool to monitor and maintain optimal plant care. It seamlessly bridges hardware and software to offer real-time environmental diagnostics, helping both novice and expert gardeners keep their plants thriving.',
+    links: [{ label: 'GitHub', url: 'https://github.com/jzekken/ONION-Your-Personal-PlantCare-Companion.git' }]
   }
 ];
 

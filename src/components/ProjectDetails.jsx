@@ -159,7 +159,7 @@ export default function ProjectDetails({ project, onClose }) {
                       letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '1rem',
                     }}
                   >
-                    {project.category}
+                    {project.category} {project.role && <span style={{color: 'rgba(255,255,255,0.3)', margin: '0 8px'}}>•</span>} {project.role}
                   </motion.p>
 
                   <motion.h1
