@@ -2,11 +2,42 @@ import { useState } from 'react';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('Success! Your message has been sent.');
-    setFormData({ name: '', email: '', message: '' });
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    const data = new FormData();
+    // REPLACE THIS with the key generated from https://web3forms.com/
+    data.append("access_key", "YOUR_ACCESS_KEY_HERE"); 
+    data.append("name", formData.name);
+    data.append("email", formData.email);
+    data.append("message", formData.message);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: data
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        // Hide success message after 5 seconds
+        setTimeout(() => setSubmitStatus(null), 5000);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -128,9 +159,21 @@ export default function ContactSection() {
             e.currentTarget.style.transform = 'translateY(0)';
             e.currentTarget.style.boxShadow = 'none';
           }}
+            disabled={isSubmitting}
           >
-            Send Message
+            {isSubmitting ? 'Sending...' : 'Send Message'}
           </button>
+          
+          {submitStatus === 'success' && (
+            <p style={{ color: '#3ECF8E', textAlign: 'center', marginTop: '1rem', fontWeight: 'bold' }}>
+              Message sent successfully! I'll get back to you soon.
+            </p>
+          )}
+          {submitStatus === 'error' && (
+            <p style={{ color: 'var(--accent-red)', textAlign: 'center', marginTop: '1rem', fontWeight: 'bold' }}>
+              Oops! Something went wrong. Please try again later.
+            </p>
+          )}
         </form>
       </div>
     </section>
