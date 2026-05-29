@@ -11,17 +11,17 @@ const projects = [
     techStack: 'Flutter (Dart), FastAPI (Python), Neo4j, Supabase',
     color: 'var(--accent-blue-bright)',
     isMobile: true,
-    image: '/projects/tuklascope/Tuklascope.png',
+    image: '/projects/tuklascope/Tuklascope.webp',
     screenshots: [
-      '/projects/tuklascope/1.jpg',
-      '/projects/tuklascope/2.jpg',
-      '/projects/tuklascope/3.jpg',
-      '/projects/tuklascope/4.jpg',
-      '/projects/tuklascope/5.jpg',
-      '/projects/tuklascope/6.jpg',
-      '/projects/tuklascope/7.jpg',
-      '/projects/tuklascope/8.png',
-      '/projects/tuklascope/9.jpg'
+      '/projects/tuklascope/1.webp',
+      '/projects/tuklascope/2.webp',
+      '/projects/tuklascope/3.webp',
+      '/projects/tuklascope/4.webp',
+      '/projects/tuklascope/5.webp',
+      '/projects/tuklascope/6.webp',
+      '/projects/tuklascope/7.webp',
+      '/projects/tuklascope/8.webp',
+      '/projects/tuklascope/9.webp'
     ]
   },
   {
@@ -30,12 +30,12 @@ const projects = [
     category: 'AI-Integrated Travel Assistant',
     techStack: 'React Native, FastAPI, Firebase',
     color: 'var(--accent-yellow)',
-    image: '/projects/laagtabai/Laag ta bAI.png',
+    image: '/projects/laagtabai/Laag ta bAI.webp',
     screenshots: [
-      '/projects/laagtabai/8.png',
-      '/projects/laagtabai/9.png',
-      '/projects/laagtabai/10.png',
-      '/projects/laagtabai/last.jpg'
+      '/projects/laagtabai/8.webp',
+      '/projects/laagtabai/9.webp',
+      '/projects/laagtabai/10.webp',
+      '/projects/laagtabai/last.webp'
     ]
   },
   {
@@ -44,10 +44,10 @@ const projects = [
     category: 'AI-Powered Centralized Study Hub',
     techStack: 'React, Node.js, Firebase',
     color: 'var(--accent-red)',
-    image: '/projects/mort/mort.png',
+    image: '/projects/mort/mort.webp',
     screenshots: [
       '/projects/mort/Mort.mp4',
-      '/projects/mort/pic.jpg'
+      '/projects/mort/mort.webp'
     ]
   },
   {
@@ -56,13 +56,13 @@ const projects = [
     category: 'Webapp Game',
     techStack: 'React, Node.js',
     color: '#33ff88',
-    image: '/projects/chessfps/chessfps.png',
+    image: '/projects/chessfps/chessfps.webp',
     screenshots: [
-      '/projects/chessfps/1.png',
-      '/projects/chessfps/2.png',
-      '/projects/chessfps/3.png',
-      '/projects/chessfps/4.png',
-      '/projects/chessfps/5.png'
+      '/projects/chessfps/1.webp',
+      '/projects/chessfps/2.webp',
+      '/projects/chessfps/3.webp',
+      '/projects/chessfps/4.webp',
+      '/projects/chessfps/5.webp'
     ]
   }
 ];
@@ -139,7 +139,7 @@ export default function FeaturedProjects() {
                   overflow: 'hidden'
                 }}>
                   {project.image ? (
-                    <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img src={project.image} alt={project.title} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   ) : (
                     <span style={{ color: project.color, fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px' }}>
                       Preview

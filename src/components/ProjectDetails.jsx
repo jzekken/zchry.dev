@@ -289,6 +289,7 @@ export default function ProjectDetails({ project, onClose }) {
                           loop
                           muted
                           playsInline
+                          preload="metadata"
                           style={{
                             maxWidth: '100%', 
                             maxHeight: '100%',
@@ -302,6 +303,7 @@ export default function ProjectDetails({ project, onClose }) {
                         <img
                           src={img}
                           alt={`${project.title} screenshot ${index + 1}`}
+                          loading="lazy"
                           style={{
                             maxWidth: '100%', 
                             maxHeight: '100%',
