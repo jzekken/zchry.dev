@@ -221,4 +221,5 @@ export default function AstronautGoal() {
   );
 }
 
-
+// Preload the model so it doesn't pop in
+useGLTF.preload('/Astronaut.glb');
