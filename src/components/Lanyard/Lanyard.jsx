@@ -15,7 +15,7 @@ import './Lanyard.css';
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 
-export default function Lanyard({ position = [0, 0, 30], gravity = [0, -40, 0], fov = 20, transparent = true }) {
+export default function Lanyard({ position = [0, 0, 30], gravity = [0, -40, 0], fov = 20, transparent = true, onPull }) {
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function Lanyard({ position = [0, 0, 30], gravity = [0, -40, 0], 
       >
         <ambientLight intensity={Math.PI} />
         <Physics gravity={gravity} timeStep={isMobile ? 1 / 30 : 1 / 60}>
-          <Band isMobile={isMobile} />
+          <Band isMobile={isMobile} onPull={onPull} />
         </Physics>
         <Environment blur={0.75}>
           <Lightformer
@@ -70,7 +70,7 @@ export default function Lanyard({ position = [0, 0, 30], gravity = [0, -40, 0], 
     </div>
   );
 }
-function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
+function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, onPull }) {
   const band = useRef(),
     fixed = useRef(),
     j1 = useRef(),
@@ -162,6 +162,10 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
       ang.copy(card.current.angvel());
       rot.copy(card.current.rotation());
       card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z });
+      
+      if (onPull && card.current.translation().y < -1.5) {
+        onPull();
+      }
     }
   });
 
