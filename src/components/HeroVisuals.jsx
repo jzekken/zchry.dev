@@ -181,7 +181,7 @@ export default function HeroVisuals() {
             onMouseOut={(e) => e.target.style.transform = 'scale(1)'}>
               Change Theme
             </button>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
