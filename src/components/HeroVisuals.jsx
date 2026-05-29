@@ -1,4 +1,4 @@
-import { useRef, useMemo, useState } from 'react';
+import { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment } from '@react-three/drei';
 import * as THREE from 'three';
@@ -98,20 +98,26 @@ const ParticleSwarm = ({ paletteIndex }) => {
 };
 
 export default function HeroVisuals() {
-  const [paletteIndex, setPaletteIndex] = useState(0);
+  const [paletteIndex, setPaletteIndex] = useState(() => {
+    const saved = localStorage.getItem('themeIndex');
+    return saved !== null ? parseInt(saved, 10) : 0;
+  });
 
-  const handleThemeChange = () => {
-    const nextIndex = (paletteIndex + 1) % PALETTES.length;
-    setPaletteIndex(nextIndex);
-    
-    const p = PALETTES[nextIndex];
+  // Apply the loaded theme immediately on mount
+  useEffect(() => {
+    const p = PALETTES[paletteIndex];
     const root = document.documentElement;
     root.style.setProperty('--accent-yellow', p[0]);
     root.style.setProperty('--accent-white', p[1]);
     root.style.setProperty('--accent-blue-bright', p[2]);
     root.style.setProperty('--accent-red', p[3]);
-    // Optionally adapt the deeper blue if needed, or leave it
     root.style.setProperty('--accent-blue', p[2]);
+  }, [paletteIndex]);
+
+  const handleThemeChange = () => {
+    const nextIndex = (paletteIndex + 1) % PALETTES.length;
+    setPaletteIndex(nextIndex);
+    localStorage.setItem('themeIndex', nextIndex);
   };
 
   const currentPalette = PALETTES[paletteIndex];
