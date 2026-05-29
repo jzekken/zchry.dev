@@ -55,8 +55,9 @@ export default function ContactSection() {
           <span className="text-white">GET IN </span>
           <span className="text-yellow">TOUCH</span>
         </h2>
-        <p style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '1.1rem' }}>
-          Have a project in mind or just want to say hi? Drop me a message below.
+        <p style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '1.1rem', color: '#aaa' }}>
+          Have a project in mind or just want to say hi? Drop me a message below.<br/>
+          <span style={{ fontSize: '0.9rem', color: 'var(--accent-yellow)', fontWeight: 'bold' }}>(Yes, this form is actually working!)</span>
         </p>
         
         <form onSubmit={handleSubmit} className="glass" style={{
