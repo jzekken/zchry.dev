@@ -1,5 +1,6 @@
 import React from 'react';
 import { Code2, Monitor, Cpu, Terminal, Database, Palette, Settings, Globe, Server } from 'lucide-react';
+import { motion } from 'framer-motion';
 import CircularGallery from './CircularGallery/CircularGallery';
 
 const techCategories = [
@@ -63,7 +64,12 @@ export default function TechStackSection() {
           margin: '0 auto'
         }}>
           {techCategories.map((category, idx) => (
-            <div key={idx} style={{
+            <motion.div 
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: false, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: idx * 0.15, type: 'spring', bounce: 0.4 }}
+              key={idx} style={{
               backgroundColor: 'rgba(255,255,255,0.02)',
               border: '1px solid rgba(255,255,255,0.05)',
               borderRadius: '16px',
@@ -99,7 +105,7 @@ export default function TechStackSection() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>

@@ -93,7 +93,7 @@ export default function FeaturedProjects() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
           <h2 style={{ fontSize: '3.5rem', marginBottom: '3rem' }}>
@@ -108,13 +108,14 @@ export default function FeaturedProjects() {
             <motion.div
               key={project.id}
               className="glass"
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100, y: 50 }}
               whileInView={{ 
                 opacity: 1, 
+                x: 0,
                 y: 0,
-                transition: { duration: 0.6, delay: index * 0.2 }
+                transition: { duration: 0.8, type: 'spring', bounce: 0.4 }
               }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: false, margin: "-50px" }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
               whileHover={{ 
                 scale: 1.05, 
@@ -179,7 +180,7 @@ export default function FeaturedProjects() {
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.5, delay: 0.2 }}
           style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem' }}
         >
