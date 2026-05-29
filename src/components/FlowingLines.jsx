@@ -33,7 +33,7 @@ export default function FlowingLines() {
         trigger: document.body,
         start: 'top top',
         end: 'bottom bottom',
-        scrub: true, // Instant scrubbing without smoothing lag
+        scrub: 1.5, // Smooth scrubbing
       }
     });
 

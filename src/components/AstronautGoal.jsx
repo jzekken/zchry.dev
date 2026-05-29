@@ -39,9 +39,10 @@ const AnimatedGroup = ({ sectionRef, textRef, startPosition }) => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: 'top 80%',
-        end: 'bottom 20%',
-        scrub: true,
+        pin: true, // Lock it to exactly one screen!
+        start: 'top top',
+        end: '+=100%', // Allow 1 screen of scrolling distance for the animation
+        scrub: 1,
         onUpdate: (self) => {
           const animToPlay = actions['Wave'] || Object.values(actions)[0];
           
