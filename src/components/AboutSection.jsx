@@ -97,14 +97,14 @@ export default function AboutSection() {
 
         {/* Text Container */}
         <div style={{ flex: '1 1 400px', minWidth: '300px' }}>
-          <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', marginBottom: '1.5rem', color: '#fff' }}>About Me</h2>
-          <p style={{ fontSize: 'clamp(1rem, 3vw, 1.15rem)', lineHeight: '1.7', color: '#ccc', marginBottom: '1.25rem' }}>
+          <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem', color: '#fff' }}>About Me</h2>
+          <p style={{ fontSize: '1.15rem', lineHeight: '1.7', color: '#ccc', marginBottom: '1.25rem' }}>
             I'm a Computer Engineering undergraduate who believes the best software comes from teams that deeply care about their craft.
           </p>
-          <p style={{ fontSize: 'clamp(1rem, 3vw, 1.15rem)', lineHeight: '1.7', color: '#ccc', marginBottom: '1.25rem' }}>
+          <p style={{ fontSize: '1.15rem', lineHeight: '1.7', color: '#ccc', marginBottom: '1.25rem' }}>
             With hands-on experience in cross-platform development and hackathons, I thrive in innovative, community-driven environments.
           </p>
-          <p style={{ fontSize: 'clamp(1rem, 3vw, 1.15rem)', lineHeight: '1.7', color: '#ccc', marginBottom: '2rem' }}>
+          <p style={{ fontSize: '1.15rem', lineHeight: '1.7', color: '#ccc', marginBottom: '2rem' }}>
             I'm looking to grow my technical foundation while building solutions that make a positive, real-world impact.
           </p>
 

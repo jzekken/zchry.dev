@@ -74,8 +74,8 @@ export default function Navbar() {
       <div
         style={{
           display: 'flex',
-          gap: 'clamp(0.25rem, 1.5vw, 1rem)',
-          padding: 'clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 4vw, 2rem)',
+          gap: '1rem',
+          padding: '0.75rem 2rem',
           borderRadius: '50px',
           background: scrolled ? 'rgba(0, 0, 0, 0.4)' : 'transparent',
           backdropFilter: scrolled ? 'blur(10px)' : 'none',
@@ -96,12 +96,12 @@ export default function Navbar() {
                 background: 'transparent',
                 border: 'none',
                 color: isActive ? 'var(--accent-yellow)' : '#fff',
-                fontSize: 'clamp(0.7rem, 2vw, 0.9rem)',
+                fontSize: '0.9rem',
                 fontWeight: isActive ? 'bold' : '500',
                 cursor: 'pointer',
                 textTransform: 'uppercase',
                 letterSpacing: '1px',
-                padding: 'clamp(0.25rem, 1vw, 0.5rem)',
+                padding: '0.5rem',
                 transition: 'color 0.3s ease',
                 outline: 'none',
               }}

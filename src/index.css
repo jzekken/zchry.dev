@@ -63,12 +63,6 @@ p {
   padding: 0 2rem;
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 0 1rem;
-  }
-}
-
 .section {
   position: relative;
   min-height: 100vh;

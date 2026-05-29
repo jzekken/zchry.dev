@@ -152,14 +152,12 @@ export default function HeroVisuals() {
         {/* Text inside the rounded container */}
         <div className="container" style={{ position: 'relative', zIndex: 10, pointerEvents: 'none', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
           <div style={{ maxWidth: '800px', pointerEvents: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 8vw, 5rem)', marginBottom: '1rem', lineHeight: '1.1', transition: 'color 0.3s ease' }}>
+            <h1 style={{ fontSize: '5rem', marginBottom: '1rem', lineHeight: '1', transition: 'color 0.3s ease' }}>
               <span style={{ color: currentPalette[1] }}>HELLO, I'M </span><br />
               <span style={{ color: currentPalette[0] }}>JOHN </span>
               <span style={{ color: currentPalette[2] }}>ZACHARY</span>
             </h1>
-          </div>
-          <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8, delay: 0.2 }}>
-            <p style={{ fontSize: 'clamp(1rem, 4vw, 1.25rem)', maxWidth: '500px', marginBottom: '2rem' }}>
+            <p style={{ fontSize: '1.25rem', maxWidth: '500px', marginBottom: '2rem' }}>
               3rd year Computer Engineering student.<br/>
              AI and Full Stack Developer.
             </p>
@@ -181,7 +179,7 @@ export default function HeroVisuals() {
             onMouseOut={(e) => e.target.style.transform = 'scale(1)'}>
               Change Theme
             </button>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -96,14 +96,14 @@ export default function FeaturedProjects() {
           viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
-          <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 3.5rem)', marginBottom: '3rem' }}>
+          <h2 style={{ fontSize: '3.5rem', marginBottom: '3rem' }}>
             <span className="text-white">FEATURED </span>
             <span className="text-yellow">PROJECTS</span>
           </h2>
         </motion.div>
 
-        {/* Responsive grid using auto-fit */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+        {/* Updated grid to strictly 2 columns */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '2rem' }}>
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -167,7 +167,7 @@ export default function FeaturedProjects() {
                 <p style={{ color: project.color, fontSize: '0.875rem', fontWeight: 'bold', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '1px' }}>
                   {project.category}
                 </p>
-                <h3 style={{ fontSize: 'clamp(1.25rem, 4vw, 1.75rem)', marginBottom: '1rem', color: '#fff' }}>{project.title}</h3>
+                <h3 style={{ fontSize: '1.75rem', marginBottom: '1rem', color: '#fff' }}>{project.title}</h3>
                 <p style={{ color: '#aaa', fontSize: '0.9rem' }}>
                   <strong style={{ color: '#fff' }}>Tech Stack:</strong> {project.techStack}
                 </p>
