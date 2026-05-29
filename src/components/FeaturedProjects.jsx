@@ -10,7 +10,19 @@ const projects = [
     category: 'AI-Powered Career Discovery',
     techStack: 'Flutter (Dart), FastAPI (Python), Neo4j, Supabase',
     color: 'var(--accent-blue-bright)',
-    image: '/projects/Tuklascope.png'
+    isMobile: true,
+    image: '/projects/tuklascope/Tuklascope.png',
+    screenshots: [
+      '/projects/tuklascope/1.jpg',
+      '/projects/tuklascope/2.jpg',
+      '/projects/tuklascope/3.jpg',
+      '/projects/tuklascope/4.jpg',
+      '/projects/tuklascope/5.jpg',
+      '/projects/tuklascope/6.jpg',
+      '/projects/tuklascope/7.jpg',
+      '/projects/tuklascope/8.png',
+      '/projects/tuklascope/9.jpg'
+    ]
   },
   {
     id: 2,
@@ -18,7 +30,13 @@ const projects = [
     category: 'AI-Integrated Travel Assistant',
     techStack: 'React Native, FastAPI, Firebase',
     color: 'var(--accent-yellow)',
-    image: '/projects/Laag ta bAI.png'
+    image: '/projects/laagtabai/Laag ta bAI.png',
+    screenshots: [
+      '/projects/laagtabai/8.png',
+      '/projects/laagtabai/9.png',
+      '/projects/laagtabai/10.png',
+      '/projects/laagtabai/last.jpg'
+    ]
   },
   {
     id: 3,
@@ -26,14 +44,26 @@ const projects = [
     category: 'AI-Powered Centralized Study Hub',
     techStack: 'React, Node.js, Firebase',
     color: 'var(--accent-red)',
-    image: '/projects/mort.png'
+    image: '/projects/mort/mort.png',
+    screenshots: [
+      '/projects/mort/Mort.mp4',
+      '/projects/mort/pic.jpg'
+    ]
   },
   {
     id: 4,
     title: 'chessfps',
     category: 'Webapp Game',
     techStack: 'React, Node.js',
-    color: '#33ff88'
+    color: '#33ff88',
+    image: '/projects/chessfps/chessfps.png',
+    screenshots: [
+      '/projects/chessfps/1.png',
+      '/projects/chessfps/2.png',
+      '/projects/chessfps/3.png',
+      '/projects/chessfps/4.png',
+      '/projects/chessfps/5.png'
+    ]
   }
 ];
 

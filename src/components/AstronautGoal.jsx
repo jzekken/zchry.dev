@@ -43,12 +43,6 @@ const AnimatedGroup = ({ sectionRef, textRef, startPosition }) => {
         start: 'top top',
         end: '+=100%', // Allow 1 screen of scrolling distance for the animation
         scrub: 1,
-        snap: {
-          snapTo: 1, // Always snap forward to the end once they start scrolling
-          duration: { min: 1.0, max: 2.0 },
-          ease: 'power2.inOut',
-          delay: 0.1
-        },
         onUpdate: (self) => {
           const animToPlay = actions['Wave'] || Object.values(actions)[0];
           
@@ -94,28 +88,9 @@ const AnimatedGroup = ({ sectionRef, textRef, startPosition }) => {
       ease: 'power2.inOut' // Spin to face forward precisely when he lands
     }, 0);
 
-    // Auto-scroll the page down to this section when it comes into view
-    const st = ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: 'top 80%', // Trigger earlier when they first see the stars
-      once: true,
-      onEnter: () => {
-        // Target scroll is the end of the pinned animation (offsetTop + 100vh)
-        const targetScroll = sectionRef.current.offsetTop + window.innerHeight;
-        
-        // Slowly tween the scrollbar over 3.5 seconds for a cinematic effect
-        gsap.to(window, {
-          scrollTo: { y: targetScroll, autoKill: true },
-          duration: 3.5, 
-          ease: 'power2.inOut'
-        });
-      }
-    });
-
     return () => {
       if (tl.scrollTrigger) tl.scrollTrigger.kill();
       tl.kill();
-      if (st) st.kill();
     };
   }, [actions, sectionRef, textRef, startPosition]);
 
