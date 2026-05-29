@@ -51,7 +51,7 @@ export default function ContactSection() {
       zIndex: 10
     }}>
       <div className="container" style={{ maxWidth: '700px' }}>
-        <h2 style={{ fontSize: '3rem', marginBottom: '1rem', textAlign: 'center' }}>
+        <h2 style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', marginBottom: '1rem', textAlign: 'center' }}>
           <span className="text-white">GET IN </span>
           <span className="text-yellow">TOUCH</span>
         </h2>

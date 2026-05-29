@@ -51,7 +51,7 @@ export default function TechStackSection() {
       
       {/* Tech Stack / Arsenal */}
       <section id="stack" className="section" style={{ padding: '2rem', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '3.5rem', marginBottom: '3rem' }}>
+        <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 3.5rem)', marginBottom: '3rem' }}>
           <span className="text-white">TECH </span>
           <span className="text-yellow">STACK</span>
         </h2>
@@ -113,7 +113,7 @@ export default function TechStackSection() {
       {/* The Journey / Hackathons */}
       <section className="section" style={{ overflow: 'hidden' }}>
         <div style={{ padding: '0 2rem 1rem 2rem', textAlign: 'center' }}>
-          <h2 style={{ fontSize: '3rem', color: '#fff', marginBottom: '1rem' }}>The Journey</h2>
+          <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#fff', marginBottom: '1rem' }}>The Journey</h2>
           <p style={{ color: '#aaa', fontSize: '1.2rem' }}>Hackathons, Conventions & Events</p>
         </div>
         
