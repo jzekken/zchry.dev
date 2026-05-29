@@ -115,10 +115,10 @@ export default function TechStackSection() {
         <div style={{ width: '100%', height: '600px', position: 'relative' }}>
           <CircularGallery 
             items={[
-              { image: '/gallery/cebi.jpg', text: 'CEBI' },
-              { image: '/gallery/ibpap.png', text: 'IBPAP' },
-              { image: '/gallery/ncr.jpg', text: 'NCR' },
-              { image: '/gallery/projects.jpg', text: 'PROJECTS' }
+              { image: '/gallery/cebi.webp', text: 'CEBI' },
+              { image: '/gallery/ibpap.webp', text: 'IBPAP' },
+              { image: '/gallery/ncr.webp', text: 'NCR' },
+              { image: '/gallery/projects.webp', text: 'PROJECTS' }
             ]} 
             bend={3} 
             textColor="#ffffff" 
