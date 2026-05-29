@@ -100,8 +100,18 @@ const ParticleSwarm = ({ paletteIndex }) => {
 export default function HeroVisuals() {
   const [paletteIndex, setPaletteIndex] = useState(0);
 
-  const handleContainerClick = () => {
-    setPaletteIndex((prev) => (prev + 1) % PALETTES.length);
+  const handleThemeChange = () => {
+    const nextIndex = (paletteIndex + 1) % PALETTES.length;
+    setPaletteIndex(nextIndex);
+    
+    const p = PALETTES[nextIndex];
+    const root = document.documentElement;
+    root.style.setProperty('--accent-yellow', p[0]);
+    root.style.setProperty('--accent-white', p[1]);
+    root.style.setProperty('--accent-blue-bright', p[2]);
+    root.style.setProperty('--accent-red', p[3]);
+    // Optionally adapt the deeper blue if needed, or leave it
+    root.style.setProperty('--accent-blue', p[2]);
   };
 
   const currentPalette = PALETTES[paletteIndex];
@@ -110,7 +120,6 @@ export default function HeroVisuals() {
     <section className="section" style={{ padding: '2rem', height: '100vh', display: 'flex', flexDirection: 'column' }}>
       
       <div 
-        onClick={handleContainerClick}
         style={{
           position: 'relative',
           flexGrow: 1, // Fill available height
@@ -124,7 +133,7 @@ export default function HeroVisuals() {
           flexDirection: 'column',
           justifyContent: 'center'
         }}
-        title="Click anywhere here to change colors!"
+        title="Welcome"
       >
         <div className="canvas-container" style={{ pointerEvents: 'none' }}>
           <Canvas camera={{ position: [0, 0, 15], fov: 60 }}>
@@ -146,8 +155,10 @@ export default function HeroVisuals() {
               3rd year Computer Engineering student.<br/>
              AI and Full Stack Developer.
             </p>
-            <button style={{
-              background: currentPalette[0],
+            <button 
+              onClick={handleThemeChange}
+              style={{
+              background: 'var(--accent-yellow)',
               color: '#000000',
               border: 'none',
               padding: '1rem 2rem',
@@ -160,7 +171,7 @@ export default function HeroVisuals() {
             }}
             onMouseOver={(e) => e.target.style.transform = 'scale(1.05)'}
             onMouseOut={(e) => e.target.style.transform = 'scale(1)'}>
-              Explore Work
+              Change Theme
             </button>
           </div>
         </div>
