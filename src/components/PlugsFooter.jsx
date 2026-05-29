@@ -5,10 +5,8 @@ const MailIcon = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="non
 
 export default function PlugsFooter() {
   const links = [
-    { name: 'GitHub', icon: <GithubIcon />, url: '#', color: 'var(--accent-white)' },
-    { name: 'Twitter', icon: <TwitterIcon />, url: '#', color: 'var(--accent-blue-bright)' },
-    { name: 'LinkedIn', icon: <LinkedinIcon />, url: '#', color: 'var(--accent-blue)' },
-    { name: 'Email', icon: <MailIcon />, url: 'mailto:hello@example.com', color: 'var(--accent-yellow)' },
+    { name: 'LinkedIn', icon: <LinkedinIcon />, url: 'https://www.linkedin.com/in/gillana-john-zachary-n-80937b2a3/', color: 'var(--accent-blue)' },
+    { name: 'Email', icon: <MailIcon />, url: 'mailto:johnzachary.gillana21@gmail.com', color: 'var(--accent-yellow)' },
   ];
 
   return (
@@ -28,6 +26,8 @@ export default function PlugsFooter() {
             <a 
               key={link.name} 
               href={link.url}
+              target={link.name === 'LinkedIn' ? '_blank' : undefined}
+              rel={link.name === 'LinkedIn' ? 'noreferrer' : undefined}
               style={{
                 display: 'flex',
                 alignItems: 'center',
